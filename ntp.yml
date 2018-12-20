@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: Package
+      yum : name=ntp state=present
+    - name: Service Starting
+      service: name=ntpd state=started enabled=yes
+    - name: copying ntp file
+      copy: src="/var/tmp/ntpfile" dest="/etc/ntpd.conf/"
